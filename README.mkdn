@@ -1,44 +1,41 @@
-Optimized Resurrection Remix manifest
-===================
+# mordiford/platform_manifest
 
-## Howto
+## これなん
 
-```
-sudo add-apt-repository ppa:openjdk-r/ppa
-```
+- Snapdragon 800/801/805/808/810/820 搭載端末向けに諸々~~削られ~~最適化された `platform_manifest` です
+    - 他のSoC向けの `hardware/` 以下のリポジトリやLinux-x86以外のホスト向けのToolchain群は無慈悲にコメントアウトされました
+    - `oneplus2` で動作確認済です
+- Toolchainを[UBERTC](https://bitbucket.org/DespairFactor/)に変更しています
+    - `arm64`の場合は `BoardConfig.mk` で `KERNEL_TOOLCHAIN` を適切に指定しないと確実にビルドがコケるので注意してください
+- 独断で必要無さそうな以下のパッケージを削りました
+    - packages/
+        - apps/
+            - AudioFX
+            - Browser
+            - Eleven
+            - FMRadio
+        - screensavers/
+            - Basic
+            - PhotoTables
+            - WebView
+        - wallpapers/
+            - Basic
+            - Galaxy4
+            - HoloSpiral
+            - NoiseField
+            - PhaseBeam
+            - PhotoPhase
+- `packages_apps_ResurrectionStats` がprebuiltsのを使ってて翻訳反映させてくれないので[ソースからビルドさせる](https://github.com/mordiford/packages_apps_ResurrectionStats)ようにしてます
+    - その関係で `android_vendor_resurrection` も[手を入れたもの](https://github.com/mordiford/android_vendor_resurrection)に変更しています
 
-```
-sudo apt-get update && sudo apt-get install git-core gnupg flex bison gperf libsdl1.2-dev libesd0-dev libwxgtk2.8-dev squashfs-tools build-essential zip curl libncurses5-dev zlib1g-dev openjdk-7-jre openjdk-7-jdk pngcrush schedtool libxml2 libxml2-utils xsltproc lzop libc6-dev schedtool g++-multilib lib32z1-dev lib32ncurses5-dev lib32readline-gplv2-dev gcc-multilib liblz4-1 liblz4-tool texinfo gcc gperf patch automake g++ gawk libexpat1-dev bc autoconf pkg-config liblzma-dev liblzma5 maven
-```
+## 使い方
 
-```
-mkdir ~/bin
-```
-
-```
-export PATH=~/bin:$PATH
-```
-
-```
-curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
-```
-
-```
-chmod a+x ~/bin/repo
-```
-
-```
-mkdir rr
-```
-
-```
-cd rr
-```
+[Resurrection Remix のビルド方法 - dev:mordiford](http://dev.maud.io/entry/2016/03/18/how-to-build-rr) で `2-b-3` を適当に `mordiford` に読み替えてください。
 
 ```
 repo init -u https://github.com/mordiford/platform_manifest.git -b marshmallow
 ```
 
 ```
-repo sync -j8 -f --force-sync --no-clone-bundle
+repo sync -j8 -c -f --force-sync --no-clone-bundle
 ```
