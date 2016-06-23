@@ -14,6 +14,7 @@
         - apps/
             - AudioFX
             - Browser
+            - Camera2
             - Eleven
             - FMRadio
         - screensavers/
@@ -27,6 +28,7 @@
             - NoiseField
             - PhaseBeam
             - PhotoPhase
+    - GelloとSnapは残してるのでそっちの処遇はデバイスツリー側で
 - `packages_apps_ResurrectionStats` がprebuiltsのを使ってて翻訳反映させてくれないので[ソースからビルドさせる](https://github.com/mordiford/packages_apps_ResurrectionStats)ようにしてます
     - その関係で `android_vendor_resurrection` も[手を入れたもの](https://github.com/mordiford/android_vendor_resurrection)に変更しています
 
