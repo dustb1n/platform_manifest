@@ -4,9 +4,10 @@
 
 ## これなん
 
-- Snapdragon 800/801/805/808/810/820 搭載端末向けに諸々~~削られ~~最適化された `platform_manifest` です
+- Snapdragon 800/801/808/810/820 こと `msm8974`/`msm8994`(`msm8992`)/`msm8996` 搭載端末向けに諸々~~削られ~~最適化された `platform_manifest` です
+    - `apq8084` も一応残してるんで Snapdragon 805 もいける？(未確認)
     - 他のSoC向けの `hardware/` 以下のリポジトリやLinux-x86以外のホスト向けのToolchain群は無慈悲にコメントアウトされました
-    - `oneplus2` で動作確認済です
+    - `oneplus2` と `hammerhead` で動作確認済です
 - Toolchainを[UBERTC](https://bitbucket.org/DespairFactor/)に変更しています
     - `arm64`の場合は `BoardConfig.mk` で `KERNEL_TOOLCHAIN` を[適切に指定](https://github.com/mordiford/android_device_oneplus_oneplus2/commit/a65779f962056c02be4b8cd397ffd3c4458f12a1)しないと確実にビルドがコケるので注意してください
 - 独断で必要無さそうな以下のパッケージを削りました
@@ -28,9 +29,14 @@
             - NoiseField
             - PhaseBeam
             - PhotoPhase
-    - GelloとSnapは残してるのでそっちの処遇はデバイスツリー側で
-- `packages_apps_ResurrectionStats` がprebuiltsのを使ってて翻訳反映させてくれないので[ソースからビルドさせる](https://github.com/mordiford/packages_apps_ResurrectionStats)ようにしてます
-    - その関係で `android_vendor_resurrection` も[手を入れたもの](https://github.com/mordiford/android_vendor_resurrection)に変更しています
+    - 手元で `hammerhead` 向けにビルドしようとしたらライブ壁紙周りでコケるので[適当に削ってください](https://github.com/obsidians/proprietary_vendor_lge_hammerhead/commit/212c2b91f4964570f77add2737f5a4a5ba21a8cb)
+    - ブラウザ排除してますがCyanogen Browserこと `gello` は残してるので良さげなブラウザが最初から欲しい人はデバイスツリー側で `device.mk` にいい感じに以下追加してください
+
+```
+# Gello
+PRODUCT_PACKAGES += \
+   Gello
+```
 
 ## 使い方
 
