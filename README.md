@@ -4,8 +4,8 @@
 
 ## これなん
 
-- Snapdragon 800/801/808/810/820 こと `msm8974`/`msm8994`(`msm8992`)/`msm8996` 搭載端末向けに諸々~~削られ~~最適化された `platform_manifest` です
-    - `apq8084` も一応残してるんで Snapdragon 805 もいける？(未確認)
+- Snapdragon 800/801/808/810 こと `msm8974`/`msm8994`(`msm8992`) 搭載端末向けに諸々~~削られ~~最適化された `platform_manifest` です
+    - `lindwurm` ブランチなので自分用です。自分で必要なSoCに絞りました
     - 他のSoC向けの `hardware/` 以下のリポジトリやLinux-x86以外のホスト向けのToolchain群は無慈悲にコメントアウトされました
     - `oneplus2` と `hammerhead` で動作確認済です
 - Toolchainを[UBERTC](https://bitbucket.org/DespairFactor/)に変更しています
@@ -43,7 +43,7 @@ PRODUCT_PACKAGES += \
 [Resurrection Remix のビルド方法 - dev:mordiford](http://dev.maud.io/entry/2016/03/18/how-to-build-rr) で `2-b-3` を適当に `mordiford` に読み替えてください。
 
 ```
-repo init -u https://github.com/mordiford/platform_manifest.git -b marshmallow
+repo init -u https://github.com/mordiford/platform_manifest.git -b lindwurm
 ```
 
 ```

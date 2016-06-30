@@ -22,8 +22,7 @@
           revision="marshmallow" />
 
   <remote name="mordiford"
-          fetch="https://github.com/mordiford"
-          revision="marshmallow" />
+          fetch="https://github.com/mordiford" />
 
   <remote name="bucket"
           fetch="https://bitbucket.org"
@@ -39,7 +38,7 @@
   <project path="build" name="android_build" groups="pdk" remote="rr" >
     <copyfile src="core/root.mk" dest="Makefile" />
   </project>
-  <project path="android" name="platform_manifest" remote="mordiford"/>
+  <project path="android" name="platform_manifest" remote="mordiford" revision="lindwurm" />
   <project path="abi/cpp" name="CyanogenMod/android_abi_cpp" groups="pdk" />
   <project path="art" name="CyanogenMod/android_art" groups="pdk" />
   <project path="bionic" name="CyanogenMod/android_bionic" groups="pdk" />
